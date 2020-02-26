@@ -10,14 +10,32 @@
         </v-col>
       </v-row>
     </div>
-    <div v-for="i in 4" :key="i">
-      <v-btn-toggle v-model="toggle_one">
-        <v-btn>아아 x 10 </v-btn>
+    <div v-for="(i, index) in getMenus()" :key="index">
+      <v-btn-toggle>
+        <v-btn>{{ i.name }} x 10 </v-btn>
         <v-btn> X </v-btn>
       </v-btn-toggle>
     </div>
   </div>
 </template>
+
+<script>
+export default {
+  mounted() {
+    window.console.log('apple')
+  },
+  methods: {
+    getMenus() {
+      return [
+        { name: '아아', count: 0 },
+        { name: '아라', count: 0 },
+        { name: '따아', count: 0 },
+        { name: '따라', count: 0 }
+      ]
+    }
+  }
+}
+</script>
 
 <style>
 .container {
