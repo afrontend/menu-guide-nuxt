@@ -21,11 +21,16 @@
 
 <script>
 export default {
-  mounted() {
-    window.console.log('apple')
-  },
   methods: {
     getMenus() {
+      const { query } = this.$route
+      if (query && query.menus) {
+        const menuList = query.menus.split(',')
+        return menuList.map(menu => ({
+          name: decodeURIComponent(menu),
+          count: 0
+        }))
+      }
       return [
         { name: '아아', count: 0 },
         { name: '아라', count: 0 },
