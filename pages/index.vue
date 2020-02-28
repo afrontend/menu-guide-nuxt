@@ -10,9 +10,9 @@
         </v-col>
       </v-row>
     </div>
-    <div v-for="(i, index) in getMenus()" :key="index">
+    <div v-for="(i, index) in menuList" :key="index">
       <v-btn-toggle>
-        <v-btn>{{ i.name }} x 10 </v-btn>
+        <v-btn @click="increment(i.name)">{{ i.name }} x {{ i.count }} </v-btn>
         <v-btn> X </v-btn>
       </v-btn-toggle>
     </div>
@@ -21,7 +21,20 @@
 
 <script>
 export default {
+  data() {
+    return {
+      menuList: this.getMenus()
+    }
+  },
   methods: {
+    increment(menuName) {
+      this.menuList = this.menuList.map(m => {
+        if (m.name === menuName) {
+          m.count = m.count + 1
+        }
+        return m
+      })
+    },
     getMenus() {
       const { query } = this.$route
       if (query && query.menus) {
