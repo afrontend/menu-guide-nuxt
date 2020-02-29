@@ -12,8 +12,9 @@
     </div>
     <div v-for="(i, index) in menuList" :key="index">
       <v-btn-toggle>
-        <v-btn @click="increment(i.name)">{{ i.name }} x {{ i.count }} </v-btn>
-        <v-btn> X </v-btn>
+        <v-btn @click="increment(i.name)"> + </v-btn>
+        <v-btn>{{ i.name }} x {{ i.count }} </v-btn>
+        <v-btn @click="decrement(i.name)"> - </v-btn>
       </v-btn-toggle>
     </div>
   </div>
@@ -31,6 +32,14 @@ export default {
       this.menuList = this.menuList.map(m => {
         if (m.name === menuName) {
           m.count = m.count + 1
+        }
+        return m
+      })
+    },
+    decrement(menuName) {
+      this.menuList = this.menuList.map(m => {
+        if (m.name === menuName) {
+          m.count = m.count - 1
         }
         return m
       })
