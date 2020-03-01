@@ -17,6 +17,7 @@
         <v-btn @click="decrement(i.name)"> - </v-btn>
       </v-btn-toggle>
     </div>
+    <a :href="url">{{ url }}</a>
   </div>
 </template>
 
@@ -27,7 +28,16 @@ export default {
       menuList: this.getMenus()
     }
   },
+  computed: {
+    url() {
+      const { origin, pathname } = window.location
+      return origin + pathname + this.getUrlParameter()
+    }
+  },
   methods: {
+    getUrlParameter() {
+      return '?menus=' + this.menuList.map(m => m.name).join(',')
+    },
     increment(menuName) {
       this.menuList = this.menuList.map(m => {
         if (m.name === menuName) {
