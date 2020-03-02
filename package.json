@@ -4,6 +4,7 @@
   "description": "menu-guide with nuxt.js",
   "author": "afrontend",
   "private": true,
+  "homepage": "https://afrontend.github.io/game/menu-guide-nuxt",
   "scripts": {
     "dev": "nuxt",
     "build": "nuxt build",

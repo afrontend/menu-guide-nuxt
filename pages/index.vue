@@ -53,6 +53,7 @@ export default {
         }
         return m
       })
+      this.menuList = this.menuList.filter(m => m.count !== -1)
     },
     getMenus() {
       const { query } = this.$route
