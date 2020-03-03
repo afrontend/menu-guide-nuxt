@@ -3,10 +3,10 @@
     <div>
       <v-row>
         <v-col cols="8" sm="6" md="3">
-          <v-text-field label="Menu Name" />
+          <v-text-field v-model="menuName" label="Menu Name" />
         </v-col>
         <v-col cols="4" sm="6" md="3">
-          <v-btn>이거요</v-btn>
+          <v-btn @click="AddMenu">이거요</v-btn>
         </v-col>
       </v-row>
     </div>
@@ -25,6 +25,7 @@
 export default {
   data() {
     return {
+      menuName: '',
       menuList: this.getMenus()
     }
   },
@@ -35,6 +36,16 @@ export default {
     }
   },
   methods: {
+    AddMenu() {
+      window.console.log('addmenu')
+      if (this.menuName) {
+        this.menuList.push({
+          name: this.menuName.trim(),
+          count: 0
+        })
+        this.menuName = ''
+      }
+    },
     getUrlParameter() {
       return '?menus=' + this.menuList.map(m => m.name).join(',')
     },
