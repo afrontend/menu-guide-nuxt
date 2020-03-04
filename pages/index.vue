@@ -35,6 +35,13 @@ export default {
       return origin + pathname + this.getUrlParameter()
     }
   },
+  watch: {
+    menuName() {
+      this.menuList = this.getMenus().filter(m =>
+        m.name.includes(this.menuName)
+      )
+    }
+  },
   methods: {
     AddMenu() {
       window.console.log('addmenu')
