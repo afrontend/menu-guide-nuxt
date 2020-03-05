@@ -13,7 +13,7 @@
     <div v-for="(i, index) in menuList" :key="index">
       <v-btn-toggle>
         <v-btn @click="increment(i.name)"> + </v-btn>
-        <v-btn>{{ i.name }} x {{ i.count }} </v-btn>
+        <v-btn>{{ i.name }} ({{ i.count }}) </v-btn>
         <v-btn @click="decrement(i.name)"> - </v-btn>
       </v-btn-toggle>
     </div>
@@ -44,7 +44,6 @@ export default {
   },
   methods: {
     AddMenu() {
-      window.console.log('addmenu')
       if (this.menuName) {
         this.menuList.push({
           name: this.menuName.trim(),
