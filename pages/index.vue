@@ -47,7 +47,7 @@ export default {
       if (this.menuName) {
         this.menuList.push({
           name: this.menuName.trim(),
-          count: 0
+          count: 1
         })
         this.menuName = ''
       }
