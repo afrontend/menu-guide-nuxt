@@ -6,7 +6,7 @@
           <v-text-field v-model="menuName" label="Menu Name" />
         </v-col>
         <v-col cols="4" sm="6" md="3">
-          <v-btn @click="AddMenu">이거요</v-btn>
+          <v-btn @click="addMenu">이거요</v-btn>
         </v-col>
       </v-row>
     </div>
@@ -43,7 +43,7 @@ export default {
     }
   },
   methods: {
-    AddMenu() {
+    addMenu() {
       if (this.menuName) {
         this.menuList.push({
           name: this.menuName.trim(),
