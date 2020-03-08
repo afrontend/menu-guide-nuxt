@@ -10,7 +10,7 @@
         </v-col>
       </v-row>
     </div>
-    <div v-for="(i, index) in menuList" :key="index">
+    <div v-for="(i, index) in filteredMenuList" :key="index">
       <v-btn-toggle>
         <v-btn @click="increment(i.name)"> + </v-btn>
         <v-btn>{{ i.name }} ({{ i.count }}) </v-btn>
@@ -26,6 +26,7 @@ export default {
   data() {
     return {
       menuName: '',
+      filteredMenuList: this.getMenus(),
       menuList: this.getMenus()
     }
   },
@@ -37,7 +38,7 @@ export default {
   },
   watch: {
     menuName() {
-      this.menuList = this.getMenus().filter(m =>
+      this.filteredMenuList = this.menuList.filter(m =>
         m.name.includes(this.menuName)
       )
     }
@@ -50,6 +51,7 @@ export default {
           count: 1
         })
         this.menuName = ''
+        this.filteredMenuList = this.menuList
       }
     },
     getUrlParameter() {
