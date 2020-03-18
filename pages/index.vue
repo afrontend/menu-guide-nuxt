@@ -3,7 +3,11 @@
     <div>
       <v-row>
         <v-col cols="8" sm="6" md="3">
-          <v-text-field v-model="menuName" label="Menu Name" />
+          <v-text-field
+            v-model="menuName"
+            label="Menu Name"
+            @keypress="keypress"
+          />
         </v-col>
         <v-col cols="4" sm="6" md="3">
           <v-btn @click="addMenu">이거요</v-btn>
@@ -44,6 +48,11 @@ export default {
     }
   },
   methods: {
+    keypress(e) {
+      if (e.key === 'Enter') {
+        this.addMenu()
+      }
+    },
     addMenu() {
       if (this.menuName) {
         this.menuList.push({
