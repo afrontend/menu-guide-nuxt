@@ -1,19 +1,17 @@
 <template>
-  <div>
-    <div>
-      <v-row>
-        <v-col cols="8" sm="6" md="3">
-          <v-text-field
-            v-model="menuName"
-            label="Menu Name"
-            @keypress="keypress"
-          />
-        </v-col>
-        <v-col cols="4" sm="6" md="3">
-          <v-btn @click="addMenu">이거요</v-btn>
-        </v-col>
-      </v-row>
-    </div>
+  <div class="container">
+    <v-row>
+      <v-col cols="8" sm="6" md="3">
+        <v-text-field
+          v-model="menuName"
+          label="Menu Name"
+          @keypress="keypress"
+        />
+      </v-col>
+      <v-col cols="4" sm="6" md="3">
+        <v-btn @click="addMenu">이거요</v-btn>
+      </v-col>
+    </v-row>
     <div v-for="(i, index) in filteredMenuList" :key="index">
       <v-btn-toggle>
         <v-btn @click="increment(i.name)"> + </v-btn>
@@ -106,10 +104,5 @@ export default {
 <style>
 .container {
   margin: 0 auto;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
 }
 </style>
